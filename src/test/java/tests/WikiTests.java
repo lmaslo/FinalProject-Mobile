@@ -1,5 +1,8 @@
 package tests;
+
 import io.appium.java_client.MobileBy;
+import io.qameta.allure.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -12,35 +15,50 @@ import static io.qameta.allure.Allure.step;
 
 @Tag("selenide")
 public class WikiTests extends TestBase {
+
     @Test
-    void searchTest3() {
-        //Онбординг первый шаг
+    @DisplayName("Проверка онбординга")
+    @Description(
+            "Проверка перехода между экранами онбординга и текстов на экранах "
+    )
+    void onboardingTest() {
 
-        $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("The Free Encyclopedia …in over 300 languages"));
-        $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("We’ve found the following on your device:"));
+        step("Check the onboarding first screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("The Free Encyclopedia …in over 300 languages"));
+            $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("We’ve found the following on your device:"));
+        });
 
-        //второй шаг онбординга
-        $(MobileBy.xpath("//android.widget.LinearLayout/android.widget.LinearLayout[2]")).click();
-        $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("New ways to explore"));
-        $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("Dive down the Wikipedia rabbit hole with " +
-                "a constantly updating Explore feed. Customize the feed to your interests – whether it’s learning about historical " +
-                "events On this day, or rolling the dice with Random."));
+        step("Moving to the second screen", () -> {
+            $(MobileBy.xpath("//android.widget.LinearLayout/android.widget.LinearLayout[2]")).click();
+        });
 
+        step("Check the onboarding second screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("New ways to explore"));
+            $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("Dive down the Wikipedia rabbit hole with " +
+                    "a constantly updating Explore feed. Customize the feed to your interests – whether it’s learning about historical " +
+                    "events On this day, or rolling the dice with Random."));
+        });
 
-        //третий шаг онбординга
-        $(MobileBy.xpath("//android.widget.LinearLayout/android.widget.LinearLayout[3]")).click();
-        $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Reading lists with sync"));
-        $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("You can make reading lists from " +
-                "articles you want to read later, even when you’re offline. Login to your Wikipedia account to sync your " +
-                "reading lists. Join Wikipedia"));
+        step("Moving to the third screen", () -> {
+            $(MobileBy.xpath("//android.widget.LinearLayout/android.widget.LinearLayout[3]")).click();
+        });
 
+        step("Check the onboarding third screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Reading lists with sync"));
+            $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("You can make reading lists from " +
+                    "articles you want to read later, even when you’re offline. Login to your Wikipedia account to sync your " +
+                    "reading lists. Join Wikipedia"));
+        });
 
-        //четвертый
-        $(MobileBy.xpath("//android.widget.LinearLayout/android.widget.LinearLayout[4]")).click();
-        $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Send anonymous data"));
-        $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("Help make the app better" +
-                " by letting us know how you use it. Data collected is anonymous. Learn more"));
+        step("Moving to the fourth screen", () -> {
+            $(MobileBy.xpath("//android.widget.LinearLayout/android.widget.LinearLayout[4]")).click();
+        });
 
+        step("Check the onboarding fourth screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView")).shouldHave(text("Send anonymous data"));
+            $(MobileBy.id("org.wikipedia.alpha:id/secondaryTextView")).shouldHave(text("Help make the app better" +
+                    " by letting us know how you use it. Data collected is anonymous. Learn more"));
+        });
 
     }
 
