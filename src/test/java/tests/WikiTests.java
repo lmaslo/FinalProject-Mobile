@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -105,7 +106,7 @@ public class WikiTests extends TestBase {
     @Description(
             "Проверка открытия экрана Настроить ленту и текста на нем"
     )
-    void searchTest2() {
+    void searchScreenTape() {
 
         step("Skip onboarding", Selenide::back);
 
@@ -118,6 +119,50 @@ public class WikiTests extends TestBase {
                     + "/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView"))
                     .shouldHave(text("Customize the feed"));
         });
+    }
+
+    @Test
+    @DisplayName("Проверка экрана перехода через tabbar'")
+    @Description(
+            "Проверка перехода по таббару и текста на экранах "
+    )
+    void checkTabbar() {
+        step("Skip onboarding", Selenide::back);
+
+        step("Moving to the Saved screen from tab bar", () -> {
+            $(MobileBy.AccessibilityId("Saved")).click();
+        });
+
+        step("Check text on screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/messageTitleView"))
+                    .shouldHave(text("Sync reading lists"));
+        });
+
+        step("Moving to the Search screen from tab bar", () -> {
+            $(MobileBy.AccessibilityId("Search")).click();
+        });
+
+        step("Check text on screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/history_title")).shouldHave(text("History"));
+        });
+
+        step("Moving to the Edits screen from tab bar", () -> {
+            $(MobileBy.AccessibilityId("Edits")).click();
+        });
+
+        step("Check text on screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/messageTitleView")).shouldHave(text("Did you " +
+                    "know that everyone can edit Wikipedia?"));
+        });
+
+        step("Moving to the More screen from tab bar", () -> {
+            $(MobileBy.AccessibilityId("More")).click();
+        });
+
+        step("Check text on screen", () -> {
+            $(MobileBy.id("org.wikipedia.alpha:id/main_drawer_account_container")).shouldHave(visible);
+        });
+
     }
 
 
