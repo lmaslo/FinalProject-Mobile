@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Selenide;
 import io.appium.java_client.MobileBy;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
@@ -64,20 +65,34 @@ public class WikiTests extends TestBase {
 
 
     @Test
+    @DisplayName("Проверка поиска")
+    @Description(
+            "Проверка поиска по тексту Appium "
+    )
     void searchTest() {
+        step("Skip onboarding", Selenide::back);
 
-        step("Skip information", () -> {
+        /*step("Skip information", () -> {
             $(MobileBy.id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
-        });
+        });*/
 
-        step("Input text \"BrowserStack\" and Search", () -> {
+        step("Type search", () -> {
+            $(MobileBy.AccessibilityId("Search Wikipedia")).click();
+            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text"))
+                    .setValue("Appium");
+        });
+        /*step("Input text \"BrowserStack\" and Search", () -> {
             $(MobileBy.AccessibilityId("Search Wikipedia")).click();
             $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).setValue("BrowserStack");
-        });
+        });*/
 
-        step("Check results", () -> {
+        step("Verify content found", () ->
+                $$(MobileBy.id("org.wikipedia.alpha:id/page_list_item_title"))
+                        .shouldHave(sizeGreaterThan(0)));
+
+        /*step("Check results", () -> {
             $$(byClassName("android.widget.TextView")).shouldHave(sizeGreaterThan(0));
-        });
+        });*/
 
     }
 }
