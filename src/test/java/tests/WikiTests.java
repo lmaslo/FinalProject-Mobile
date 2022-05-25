@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
@@ -20,9 +19,7 @@ public class WikiTests extends TestBase {
 
     @Test
     @DisplayName("Проверка онбординга")
-    @Description(
-            "Проверка перехода между экранами онбординга и текстов на экранах "
-    )
+    @Description("Проверка перехода между экранами онбординга и текстов на экранах ")
     void onboardingTest() {
 
         step("Check the onboarding first screen", () -> {
@@ -67,9 +64,7 @@ public class WikiTests extends TestBase {
 
     @Test
     @DisplayName("Проверка поиска")
-    @Description(
-            "Проверка поиска по тексту Appium "
-    )
+    @Description("Проверка поиска по тексту Appium ")
     void searchTest() {
         step("Skip onboarding", Selenide::back);
 
@@ -87,9 +82,7 @@ public class WikiTests extends TestBase {
 
     @Test
     @DisplayName("Проверка текста на стартовом экране")
-    @Description(
-            "Проверка текста на стартовом экране. Экран после онбординга"
-    )
+    @Description("Проверка текста на стартовом экране. Экран после онбординга")
     void checkTextStartScreen() {
         step("Skip onboarding", Selenide::back);
 
@@ -103,9 +96,7 @@ public class WikiTests extends TestBase {
 
     @Test
     @DisplayName("Проверка экрана Настроить ленту'")
-    @Description(
-            "Проверка открытия экрана Настроить ленту и текста на нем"
-    )
+    @Description("Проверка открытия экрана Настроить ленту и текста на нем")
     void searchScreenTape() {
 
         step("Skip onboarding", Selenide::back);
@@ -123,9 +114,7 @@ public class WikiTests extends TestBase {
 
     @Test
     @DisplayName("Проверка экрана перехода через tabbar'")
-    @Description(
-            "Проверка перехода по таббару и текста на экранах "
-    )
+    @Description("Проверка перехода по таббару и текста на экранах ")
     void checkTabbar() {
         step("Skip onboarding", Selenide::back);
 
