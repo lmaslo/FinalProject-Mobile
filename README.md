@@ -7,7 +7,7 @@
 - [Сборка в Jenkins](#man_cook-Jenkins-job)
 - [Запуск из терминала](#electron-Запуск-тестов-из-терминала)
 - [Allure отчет](#bar_chart-Allure-отчет)
-- [Ви](#envelope-Уведомление-в-Telegram-при-помощи-бота)
+- [Видео пример](#video_camera-Видео)
 
 
 ## :boom: Реализованные проверки
@@ -53,3 +53,7 @@ gradle clean selenide_android_test
 <a href="https://jenkins.autotests.cloud/job/011-maslogirl-FinalProject-Mobile/10/allure/"><img src="images/screen/allure2.jpg" alt="Jenkins"/></a>
 </p>
 
+## :video_camera: Видео
+<p align="center">
+<img src="/images/screen/7d4be9ebd8c1f29a8a90efcb29c41ed5381734c5.gif" alt="video"/></a>
+</p>
